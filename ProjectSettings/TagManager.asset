@@ -8,6 +8,8 @@ TagManager:
   - Generator
   - Enemy
   - turret
+  - bullet
+  - gm
   layers:
   - Default
   - TransparentFX
@@ -15,8 +17,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - collision
+  - Enemy
   - 
   - 
   - 

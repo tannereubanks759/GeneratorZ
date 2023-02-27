@@ -9,8 +9,6 @@ public class TurretScript : MonoBehaviour
     public GameObject pivot;
     public GameObject bulletPref;
     
-    
-
     public Vector3 targetPos;
 
     public List<GameObject> Enemies = new List<GameObject>();
@@ -18,6 +16,8 @@ public class TurretScript : MonoBehaviour
 
     public float nextFire;
     public float fireRate;
+
+    public GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,46 +28,42 @@ public class TurretScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Enemies.Count > 0)
+        Enemies = gm.EnemyListGet();
+
+        if (Enemies.Count > 0 && InRange(Enemies[0]))
         {
-            targetPos = GetClosestEnemy(Enemies).transform.position;
+            targetPos = Enemies[0].transform.position;
         }
         Vector3 rotation = targetPos - this.transform.position;
         float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg - 90;
         pivot.transform.rotation = Quaternion.Euler(0, 0, rotZ);
 
 
-        if (Enemies.Count > 0 && Time.time > nextFire)
+        if (Enemies.Count > 0 && Time.time > nextFire && InRange(Enemies[0]))
         {
-            
+            shoot();
             nextFire = Time.time + fireRate;
             Debug.Log("shoot");
         }
     }
     private void shoot()
     {
-        GameObject bullet = Instantiate(bulletPref, GunEnd.transform.position, Quaternion.identity);
+        Instantiate(bulletPref, GunEnd.transform.position, pivot.transform.rotation);
         Debug.Log("shoot");
         
     }
-    public GameObject GetClosestEnemy(List<GameObject> enemies)
+    public bool InRange(GameObject enemy)
     {
-        GameObject tMin = null;
-        float minDist = 3;
-        Vector3 currentPos = transform.position;
-        foreach (GameObject t in enemies)
+        float dist = Vector3.Distance(enemy.transform.position, this.transform.position);
+        if (dist < 5)
         {
-            float dist = Vector3.Distance(t.transform.position, currentPos);
-            if (dist < minDist)
-            {
-                tMin = t;
-                minDist = dist;
-            }
+            return true;
         }
-        return tMin;
+        else
+        {
+            return false;
+        }
     }
-    public GameObject EnemyGet()
-    {
-        return GetClosestEnemy(Enemies);
-    }
+    
+    
 }
