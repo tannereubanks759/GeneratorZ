@@ -1893,11 +1893,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.25
---- !u!212 &585543915 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5495093361455853775, guid: cac527ab91723c040866d317969d52ad, type: 3}
-  m_PrefabInstance: {fileID: 618628792}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &597796417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1942,6 +1937,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5495093361455853775, guid: cac527ab91723c040866d317969d52ad, type: 3}
       propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5819319619520332124, guid: cac527ab91723c040866d317969d52ad, type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8442506903949511428, guid: cac527ab91723c040866d317969d52ad, type: 3}
@@ -1991,7 +1990,15 @@ PrefabInstance:
     - target: {fileID: 8559005853985617161, guid: cac527ab91723c040866d317969d52ad, type: 3}
       propertyPath: renderer
       value: 
-      objectReference: {fileID: 585543915}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8559005853985617161, guid: cac527ab91723c040866d317969d52ad, type: 3}
+      propertyPath: isDragging
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8559005853985617161, guid: cac527ab91723c040866d317969d52ad, type: 3}
+      propertyPath: mask.m_Bits
+      value: 224
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cac527ab91723c040866d317969d52ad, type: 3}
 --- !u!1 &619394800

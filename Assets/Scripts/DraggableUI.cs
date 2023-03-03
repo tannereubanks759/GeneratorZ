@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class DraggableUI : MonoBehaviour
 {
+    public SpriteRenderer renderer;
+
     Vector2 position;
     Vector2 startPosition;
     public GameObject turretSprite;
@@ -12,12 +14,12 @@ public class DraggableUI : MonoBehaviour
 
     public bool isDragging;
 
-    public SpriteRenderer renderer;
+    
     // Start is called before the first frame update
     void Start()
     {
         startPosition = this.transform.position;
-        
+        renderer = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
     private Vector3 offset;
@@ -45,8 +47,8 @@ public class DraggableUI : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        offset = this.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         isDragging = true;
+        offset = this.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
     private void OnMouseUp()
     {
