@@ -36,6 +36,7 @@ public class Zombie : MonoBehaviour
         if(health <= 0)
         {
             gm.EnemyList.RemoveAt(gm.EnemyList.IndexOf(this.gameObject));
+            gm.coinsSet(-10);
             Destroy(this.gameObject);
         }
     }
@@ -44,6 +45,10 @@ public class Zombie : MonoBehaviour
         if(collision.gameObject.tag == "bullet")
         {
             Damage(25);
+        }
+        if(collision.gameObject.tag == "CannonBall")
+        {
+            Damage(100);
         }
     }
     public void OnCollisionEnter2D(Collision2D collision)

@@ -10,6 +10,8 @@ TagManager:
   - turret
   - bullet
   - gm
+  - CannonBall
+  - cannon
   layers:
   - Default
   - TransparentFX

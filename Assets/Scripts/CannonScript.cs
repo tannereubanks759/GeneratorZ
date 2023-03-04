@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretScript : MonoBehaviour
+public class CannonScript : MonoBehaviour
 {
     public GameObject barrel;
     public GameObject GunEnd;
     public GameObject pivot;
     public GameObject bulletPref;
-    
+
     public Vector3 targetPos;
 
     public List<GameObject> Enemies = new List<GameObject>();
@@ -24,13 +24,13 @@ public class TurretScript : MonoBehaviour
         gm = FindObjectOfType<GameManager>();
         this.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
         nextFire = Time.time;
-        fireRate = .2f;
+        fireRate = 3f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
 
         Enemies = gm.EnemyListGet();
 
@@ -54,12 +54,12 @@ public class TurretScript : MonoBehaviour
     {
         Instantiate(bulletPref, GunEnd.transform.position, pivot.transform.rotation);
         Debug.Log("shoot");
-        
+
     }
     public bool InRange(GameObject enemy)
     {
         float dist = Vector3.Distance(enemy.transform.position, this.transform.position);
-        if (dist < 5)
+        if (dist < 3)
         {
             return true;
         }
@@ -68,6 +68,6 @@ public class TurretScript : MonoBehaviour
             return false;
         }
     }
-    
-    
+
+
 }
