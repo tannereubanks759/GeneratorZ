@@ -12,6 +12,8 @@ TagManager:
   - gm
   - CannonBall
   - cannon
+  - Barrier
+  - tree
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - UI
   - collision
   - Enemy
-  - 
+  - path
   - 
   - 
   - 

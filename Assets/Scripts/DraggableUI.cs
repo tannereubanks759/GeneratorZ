@@ -47,7 +47,16 @@ public class DraggableUI : MonoBehaviour
 
         if (isDragging == true)
         {
-            surrounding = Physics2D.OverlapCircleAll(this.transform.position, .5f, mask);
+            float radius;
+            if(this.gameObject.tag == "Barrier")
+            {
+                radius = 1f;
+            }
+            else
+            {
+                radius = .5f;
+            }
+            surrounding = Physics2D.OverlapCircleAll(this.transform.position, radius, mask);
             if (surrounding.Length > 0 || !Affordable())
             {
                 renderer.color = Color.red;
@@ -57,7 +66,7 @@ public class DraggableUI : MonoBehaviour
                 renderer.color = Color.green;
             }
 
-            position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
+            position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             this.transform.position = position;
         }
         
@@ -65,7 +74,7 @@ public class DraggableUI : MonoBehaviour
     private void OnMouseDown()
     {
         isDragging = true;
-        offset = this.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
     }
     private void OnMouseUp()
     {
@@ -87,7 +96,7 @@ public class DraggableUI : MonoBehaviour
         {
             return true;
         }
-        else if(this.gameObject.tag == "barrier" && coins >= 100)
+        else if(this.gameObject.tag == "Barrier" && coins >= 150)
         {
             return true;
         }
