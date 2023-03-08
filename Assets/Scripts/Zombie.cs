@@ -40,6 +40,24 @@ public class Zombie : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    public void Damage(float amount, bool genDied)
+    {
+        gm.hurtGen(20);
+        health -= amount;
+        if (health <= 0)
+        {
+            gm.EnemyList.RemoveAt(gm.EnemyList.IndexOf(this.gameObject));
+            if (genDied)
+            {
+                gm.coinsSet(10);
+            }
+            else
+            {
+                gm.coinsSet(-10);
+            }
+            Destroy(this.gameObject);
+        }
+    }
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "bullet")
@@ -50,13 +68,10 @@ public class Zombie : MonoBehaviour
         {
             Damage(100);
         }
+        if(collision.gameObject.tag == "Generator")
+        {
+            Damage(999, true);
+        }
     }
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
-    public void OnCollisionExit2D(Collision2D collision)
-    {
-        
-    }
+    
 }

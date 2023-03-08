@@ -25,11 +25,14 @@ public class DraggableUI : MonoBehaviour
     {
         startPosition = this.transform.position;
         renderer = this.gameObject.GetComponent<SpriteRenderer>();
+        UIScript = GameObject.FindGameObjectWithTag("ui").GetComponent<Ui>();
     }
 
     private Vector3 offset;
     
     public LayerMask mask;
+
+    public Ui UIScript;
     // Update is called once per frame
     void Update()
     {
@@ -73,12 +76,15 @@ public class DraggableUI : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        isDragging = true;
+        if (UIScript.isPaused != true && gm.isDead != true)
+        {
+            isDragging = true;
+        }
         
     }
     private void OnMouseUp()
     {
-        if(renderer.color == Color.green)
+        if(renderer.color == Color.green && UIScript.isPaused != true && gm.isDead != true)
         {
             Instantiate(turret, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
             gm.coinsSet(50);
