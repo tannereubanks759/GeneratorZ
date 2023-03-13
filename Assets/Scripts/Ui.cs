@@ -12,14 +12,26 @@ public class Ui : MonoBehaviour
     public bool isPaused = false;
 
     public AudioSource click;
+
+    public bool inGame = false;
     // Start is called before the first frame update
     void Start()
     {
-        pauseScreen.SetActive(false);
+        Debug.Log("Awake:" + SceneManager.GetActiveScene().name);
+        
+        if(SceneManager.GetActiveScene().name == "End" || SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            inGame = false;
+        }
+        else
+        {
+            inGame = true;
+            pauseScreen.SetActive(false);
+        }
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && gm.isDead!=true)
+        if (Input.GetKeyDown(KeyCode.Escape) && gm.isDead!=true && inGame == true)
         {
             pause();
         }
@@ -43,17 +55,24 @@ public class Ui : MonoBehaviour
     }
     public void pause()
     {
-        click.Play();
-        isPaused = !isPaused;
-        if (isPaused)
+        if (SceneManager.GetActiveScene().name == "End" || SceneManager.GetActiveScene().name == "MainMenu")
         {
-            pauseScreen.SetActive(true);
-            Time.timeScale = 0f;
+            inGame = false;
         }
         else
         {
-            pauseScreen.SetActive(false);
-            Time.timeScale = 1f;
+            click.Play();
+            isPaused = !isPaused;
+            if (isPaused)
+            {
+                pauseScreen.SetActive(true);
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                pauseScreen.SetActive(false);
+                Time.timeScale = 1f;
+            }
         }
         
     }

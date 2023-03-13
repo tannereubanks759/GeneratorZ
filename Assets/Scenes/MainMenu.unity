@@ -960,7 +960,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarrierSprite
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9145146062764889862, guid: 109a379115536174693a5905164665b8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 109a379115536174693a5905164665b8, type: 3}
 --- !u!1 &450927512
 GameObject:
@@ -1702,9 +1703,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1736946878}
-        m_TargetAssemblyTypeName: Ui, Assembly-CSharp
-        m_MethodName: quit
+      - m_Target: {fileID: 1736946884}
+        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3340,8 +3341,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1736946878}
-        m_TargetAssemblyTypeName: Ui, Assembly-CSharp
+      - m_Target: {fileID: 1736946884}
+        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -3402,8 +3403,8 @@ GameObject:
   - component: {fileID: 1736946881}
   - component: {fileID: 1736946880}
   - component: {fileID: 1736946879}
-  - component: {fileID: 1736946878}
   - component: {fileID: 1736946883}
+  - component: {fileID: 1736946884}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3411,22 +3412,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1736946878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1736946877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c69a8937c38a704aa5aa088702114d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseScreen: {fileID: 0}
-  gm: {fileID: 0}
-  isPaused: 0
-  click: {fileID: 1736946883}
 --- !u!114 &1736946879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3608,6 +3593,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1736946884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736946877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2731fa164b3f467449fef360d11b8a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1759374522
 GameObject:
   m_ObjectHideFlags: 0

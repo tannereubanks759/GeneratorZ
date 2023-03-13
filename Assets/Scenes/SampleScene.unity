@@ -1674,6 +1674,7 @@ MonoBehaviour:
   gm: {fileID: 2049456556}
   isPaused: 0
   click: {fileID: 349124284}
+  inGame: 0
 --- !u!82 &349124284
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2515,6 +2516,7 @@ GameObject:
   - component: {fileID: 578424177}
   - component: {fileID: 578424178}
   - component: {fileID: 578424179}
+  - component: {fileID: 578424180}
   m_Layer: 6
   m_Name: trees_1 (6)
   m_TagString: tree
@@ -2596,7 +2598,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578424176}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -2605,6 +2607,32 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.25
+--- !u!61 &578424180
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578424176}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.33818436, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.47, y: 2.5}
+    newSize: {x: 2.47, y: 2.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.7936316, y: 2.5}
+  m_EdgeRadius: 0
 --- !u!1 &597796417
 GameObject:
   m_ObjectHideFlags: 0
@@ -9239,7 +9267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3041558176609068606, guid: 7cbdeb0820e622d499663949892bf8ce, type: 3}
       propertyPath: mask.m_Bits
-      value: 480
+      value: 3552
       objectReference: {fileID: 0}
     - target: {fileID: 5757396878776079826, guid: 7cbdeb0820e622d499663949892bf8ce, type: 3}
       propertyPath: m_Name

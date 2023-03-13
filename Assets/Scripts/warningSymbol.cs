@@ -23,7 +23,7 @@ public class warningSymbol : MonoBehaviour
         if(Time.time >= nextFire)
         {
             isActive = !isActive;
-            symbol.gameObject.SetActive(isActive);
+            symbol.gameObject.GetComponent<SpriteRenderer>().enabled = (isActive);
             nextFire = Time.time + fireRate;
         }
     }
