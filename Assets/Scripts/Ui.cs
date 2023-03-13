@@ -10,6 +10,8 @@ public class Ui : MonoBehaviour
     public GameManager gm;
 
     public bool isPaused = false;
+
+    public AudioSource click;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,20 +26,24 @@ public class Ui : MonoBehaviour
     }
     public void LoadScene(string scene)
     {
+        click.Play();
         SceneManager.LoadScene(scene);
     }
     public void quit()
     {
+        click.Play();
         Application.Quit();
     }
     public void resume()
     {
+        click.Play();
         isPaused = false;
         Time.timeScale = 1f;
         pauseScreen.SetActive(false);
     }
     public void pause()
     {
+        click.Play();
         isPaused = !isPaused;
         if (isPaused)
         {

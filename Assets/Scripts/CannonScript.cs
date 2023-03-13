@@ -18,6 +18,8 @@ public class CannonScript : MonoBehaviour
     public float fireRate;
 
     public GameManager gm;
+
+    private AudioSource shootSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class CannonScript : MonoBehaviour
         this.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
         nextFire = Time.time;
         fireRate = 3f;
+        shootSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -52,6 +55,7 @@ public class CannonScript : MonoBehaviour
     }
     private void shoot()
     {
+        shootSound.Play();
         Instantiate(bulletPref, GunEnd.transform.position, pivot.transform.rotation);
         Debug.Log("shoot");
 

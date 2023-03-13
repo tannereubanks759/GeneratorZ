@@ -8,7 +8,7 @@ public class Zombie : MonoBehaviour
     public GameObject generator;
     public GameObject GameManagerObject;
     public GameManager gm;
-
+    public float speed = .2f;
     
     // Start is called before the first frame update
     void Start()
@@ -26,22 +26,23 @@ public class Zombie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.TransformDirection(Vector3.up * Time.deltaTime * 0.2f);
+        transform.position += transform.TransformDirection(Vector3.up * Time.deltaTime * speed);
         
         
     }
     public void Damage(float amount)
     {
         health -= amount;
-        if(health <= 0)
+        if(health <= 0 && gm.EnemyList.IndexOf(this.gameObject) > -1)
         {
             gm.EnemyList.RemoveAt(gm.EnemyList.IndexOf(this.gameObject));
-            gm.coinsSet(-10);
+            gm.coinsSet(-7);
             Destroy(this.gameObject);
         }
     }
     public void Damage(float amount, bool genDied)
     {
+        
         gm.hurtGen(20);
         health -= amount;
         if (health <= 0)
@@ -53,7 +54,7 @@ public class Zombie : MonoBehaviour
             }
             else
             {
-                gm.coinsSet(-10);
+                gm.coinsSet(-7);
             }
             Destroy(this.gameObject);
         }
@@ -62,16 +63,26 @@ public class Zombie : MonoBehaviour
     {
         if(collision.gameObject.tag == "bullet")
         {
-            Damage(25);
+            Damage(15);
         }
         if(collision.gameObject.tag == "CannonBall")
         {
-            Damage(100);
+            Damage(300);
         }
         if(collision.gameObject.tag == "Generator")
         {
             Damage(999, true);
         }
+        if (collision.gameObject.tag == "Barrier")
+        {
+            speed = 0f;
+        }
     }
-    
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Barrier")
+        {
+            speed = .2f;
+        }
+    }
 }

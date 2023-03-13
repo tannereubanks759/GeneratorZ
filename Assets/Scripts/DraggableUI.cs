@@ -20,6 +20,8 @@ public class DraggableUI : MonoBehaviour
 
     public GameManager gm;
 
+    public int price;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -87,7 +89,7 @@ public class DraggableUI : MonoBehaviour
         if(renderer.color == Color.green && UIScript.isPaused != true && gm.isDead != true)
         {
             Instantiate(turret, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
-            gm.coinsSet(50);
+            gm.coinsSet(price);
         }
         isDragging = false;
         this.transform.position = startPosition;
